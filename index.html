@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween AI Video Generator: Create Scary AI Videos for Free</title>
+    <meta name="description" content="Create scary or fun full Halloween videos from photos. Our free halloween AI video generator adds realistic horror effects for the perfect spooky vibe.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                Halloween AI
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#faq">FAQ</a>
+                <a href="#playground" class="btn btn-primary nav-cta">Try It Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <!-- Background Image -->
+        <div class="hero-bg-image">
+            <img src="images/hero-bg.jpg" alt="Halloween spooky background with moon and pumpkins">
+        </div>
+        
+        <!-- Animation Overlay -->
+        <div class="hero-bg-animation">
+            <!-- Particles injected via JS -->
+            <div class="fog-layer"></div>
+            <div class="fog-layer"></div>
+        </div>
+        
+        <!-- Dark Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Content -->
+        <div class="hero-content">
+            <h1>Halloween AI Video Generator</h1>
+            <p>Create scary or fun full Halloween videos from photos. Our free halloween AI video generator adds realistic horror effects for the perfect spooky vibe.</p>
+            <a href="#playground" class="btn btn-primary btn-lg">Apply Video Effect</a>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground">
+        <div class="playground-container">
+            <div class="section-header">
+                <h2>Free Halloween AI Video Generator</h2>
+                <p>Create spooky and funny Halloween videos from your photos with our Free Halloween AI Video Generator. Instantly turn any picture into a haunting Halloween scene video featuring lifelike horror effects and eerie transformations.</p>
+            </div>
+            
+            <div class="playground-grid">
+                <!-- Left: Upload Panel -->
+                <div class="playground-panel upload-panel">
+                    <h4>Upload Image</h4>
+                    <div class="upload-zone" id="upload-zone">
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <div class="upload-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 16l4-4 4 4m4-4l4 4M4 12V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6"/>
+                            </svg>
+                            <p>Drag & drop or click to upload</p>
+                            <span>PNG, JPG up to 10MB</span>
+                        </div>
+                        <img id="preview-image" class="hidden" alt="Preview">
+                    </div>
+                    <div class="playground-actions">
+                        <button class="btn btn-primary" id="generate-btn" disabled>Generate Video</button>
+                        <button class="btn btn-secondary" id="reset-btn">Reset</button>
+                    </div>
+                </div>
+                
+                <!-- Right: Result Panel -->
+                <div class="playground-panel result-panel">
+                    <h4>Result</h4>
+                    <div class="result-display" id="result-container">
+                        <div class="result-placeholder" id="result-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path d="M21 15l-5-5L5 21"/>
+                            </svg>
+                            <p>Result will appear here</p>
+                        </div>
+                        <div class="loading-overlay hidden" id="loading-state">
+                            <div class="loading-spinner"></div>
+                            <p id="loading-text">Summoning spirits...</p>
+                        </div>
+                        <img id="result-image" class="hidden" alt="Result">
+                        <!-- Video element hidden by default, used if result is video -->
+                        <video id="result-video" class="hidden" autoplay loop muted playsinline></video>
+                    </div>
+                    <div class="playground-actions">
+                        <button class="btn btn-primary" id="download-btn" disabled>Download Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How to Create Halloween AI Video?</h2>
+                <p>Follow these simple steps to turn your photo into a spooky Halloween video using AI.</p>
+            </div>
+            
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Select & Upload Photo</h3>
+                    <p>Start by choosing a clear photo for the transformation. Upload the image you want to turn into a spooky Halloween scene.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                            <path d="M12 2a10 10 0 0 1 10 10h-10"/>
+                            <path d="M12 12l9.33-4.5"/>
+                        </svg>
+                    </div>
+                    <h3>Generate Halloween Videos</h3>
+                    <p>Let the AI begin! Click the “Apply Video Effect” button, and our AI will instantly generate a spooky and funny Halloween scene video from your photo in just one click.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                    </div>
+                    <h3>Save and Share Scary Videos</h3>
+                    <p>Watch your Halloween vision come alive! Once satisfied, download your spooky video and share it with friends or on social media to scare everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>See Real Example of Halloween AI Video</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery-result-1.jpg" alt="Gothic vampiress transformation in moonlit courtyard">
+                    <div class="gallery-overlay">
+                        <span>Gothic Transformation</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-result-2.jpg" alt="Victorian ghost transformation in foggy garden">
+                    <div class="gallery-overlay">
+                        <span>Ghostly Apparition</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-result-3.jpg" alt="Golden retriever dog with spooky pumpkin">
+                    <div class="gallery-overlay">
+                        <span>Spooky Pet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>FAQs About AI Halloween Video Maker</h2>
+            </div>
+            
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is the AI Halloween Video Generator?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our AI halloween video maker is an intelligent tool that transforms any uploaded photo into a spooky, Halloween-themed video within seconds. Simply upload your image, apply the desired effect, and download your eerie, cinematic creation.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is using the tool free? Are there any costs or credits required?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, RemixAI provides free credits for new users. First-time visitors who create an account receive complimentary credits to start generating Halloween videos right away.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need any special software or editing skills?
+                    </button>
+                    <div class="faq-answer">
+                        <p>No, our tool is built for simplicity and ease of use. You don’t need any editing experience, just upload your photo, choose your effect, and let the AI handle the rest.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How realistic are the AI Halloween effects?
+                    </button>
+                    <div class="faq-answer">
+                        <p>RemixAI’s Halloween Video Maker is powered by advanced AI models that analyze facial features, lighting, and expressions to produce incredibly realistic, movie-style Halloween transformations.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Does the tool support pets, children, or group photos?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, our AI can process pets, children, or group photos; however, results may vary with multiple faces or complex backgrounds. For best results, follow the tool’s upload guidelines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Halloween AI</h3>
+                    <p>Create spooky and funny Halloween videos instantly with AI.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#playground">Generator</a>
+                        <a href="#gallery">Examples</a>
+                        <a href="#how-it-works">How it Works</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="#" data-modal-target="privacy-modal">Privacy Policy</a>
+                        <a href="#" data-modal-target="terms-modal">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Halloween AI Video Generator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" data-modal-close="privacy-modal">&times;</span>
+            <div class="modal-body">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last Updated:</strong> 2024</p>
+
+                <h4>1. Data Collection</h4>
+                <p>We collect only the minimum data necessary:</p>
+                <ul>
+                  <li>Images you upload for processing (temporarily stored)</li>
+                  <li>Basic usage analytics (non-personal)</li>
+                  <li>Browser type and device information</li>
+                </ul>
+
+                <h4>2. Image Processing</h4>
+                <p>Your uploaded images are:</p>
+                <ul>
+                  <li>Processed securely on our servers</li>
+                  <li>Automatically deleted within 24 hours</li>
+                  <li>Never shared with third parties</li>
+                  <li>Not used for AI training without consent</li>
+                </ul>
+
+                <h4>3. Data Security</h4>
+                <p>All data transmission is encrypted using SSL/TLS protocols.</p>
+
+                <h4>4. Cookies</h4>
+                <p>We use essential cookies only for site functionality.</p>
+
+                <h4>5. Your Rights</h4>
+                <p>You have the right to request deletion of any stored data.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" data-modal-close="terms-modal">&times;</span>
+            <div class="modal-body">
+                <h2>Terms of Service</h2>
+                <p><strong>Last Updated:</strong> 2024</p>
+
+                <h4>1. Acceptance of Terms</h4>
+                <p>By using this service, you agree to these Terms.</p>
+
+                <h4>2. Service Description</h4>
+                <p>This service provides AI-powered image transformation. Provided "as-is" without warranties.</p>
+
+                <h4>3. Acceptable Use</h4>
+                <p>You agree NOT to upload:</p>
+                <ul>
+                  <li>Illegal or unlawful content</li>
+                  <li>Explicit, pornographic, or obscene material</li>
+                  <li>Content depicting violence or harm</li>
+                  <li>Images you do not have rights to use</li>
+                </ul>
+
+                <h4>4. Intellectual Property</h4>
+                <p>You retain full ownership of your original images. Generated effects are royalty-free for personal and commercial use.</p>
+
+                <h4>5. Limitation of Liability</h4>
+                <p>We are not liable for any damages arising from the use of this service.</p>
+
+                <h4>6. Modifications</h4>
+                <p>We may update these terms at any time. Continued use constitutes acceptance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
